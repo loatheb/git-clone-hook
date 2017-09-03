@@ -17,6 +17,7 @@ profile_path() {
   echo "$profile_path"
 }
 
+# thanks https://unix.stackexchange.com/questions/97920/how-to-cd-automatically-after-git-clone
 main() {
   local profile_path="$(profile_path)"
   echo "
