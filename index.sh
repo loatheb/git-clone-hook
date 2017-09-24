@@ -28,9 +28,11 @@ git() {
   if [ "\$1" = clone ] ; then
     command git "\$@" --progress 2>&1 | tee \$tmp
     repo_name=\$(awk -F\' '/Cloning into/ {print \$2}' \$tmp)
-    printf \"changing to directory %s\\n\" \"\$repo_name\"
     rm \$tmp
-    cd "\$repo_name"
+    if [ -n "\$repo_name" ]; then
+      printf \"changing to directory %s\\n\" \"\$repo_name\"
+      cd "\$repo_name"
+    fi
   else
     command git "\$@"
   fi
